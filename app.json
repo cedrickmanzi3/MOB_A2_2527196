@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "CMPortfolio",
-    "slug": "CMPortfolio",
+    "slug": "cmportfolio",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -10,6 +10,7 @@
       "supportsTablet": true
     },
     "android": {
+      "package": "rw.ac.ines.ug2527196.cmportfolio",
       "adaptiveIcon": {
         "backgroundColor": "#E6F4FE",
         "foregroundImage": "./assets/android-icon-foreground.png",
@@ -20,6 +21,11 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "763cdab0-ac7e-48d4-9360-eda4cb9ab7c8"
+      }
     }
   }
 }

@@ -152,6 +152,9 @@ CMPortfolio stores profile information and the selected profile-picture referenc
   );
 }
 
+
+
+
 function TabNavigator() {
   return (
     <Tab.Navigator
@@ -160,7 +163,13 @@ function TabNavigator() {
         headerTintColor: '#173B70',
         tabBarActiveTintColor: '#173B70',
         tabBarInactiveTintColor: '#7B8798',
-        tabBarLabelStyle: { fontSize: 11 },
+        tabBarLabelStyle: {
+          fontSize: 14,
+          fontWeight: '600',
+        },
+        tabBarIconStyle: {
+          display: 'none',
+        },
       }}
     >
       <Tab.Screen name="Home" component={HomeScreen} />
@@ -171,6 +180,9 @@ function TabNavigator() {
     </Tab.Navigator>
   );
 }
+
+
+
 
 export default function App() {
   return (
