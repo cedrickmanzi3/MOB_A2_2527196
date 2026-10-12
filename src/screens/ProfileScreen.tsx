@@ -61,7 +61,59 @@ export default function ProfileScreen() {
     return Object.keys(nextErrors).length === 0;
   }
 
-  async function choosePhoto() {
+
+async function choosePhoto() {
+  function savePickedPhoto(result: ImagePicker.ImagePickerResult) {
+    if (result.canceled) {
+      return;
+    }
+
+    const imageUri = result.assets[0]?.uri;
+
+    if (!imageUri) {
+      Alert.alert('Photo error', 'No picture was selected.');
+      return;
+    }
+
+    void (async () => {
+      try {
+        const updated = { ...profile, imageUri };
+        await saveProfile(updated);
+        setProfile(updated);
+        Alert.alert('Photo updated', 'Your profile picture has been saved.');
+      } catch {
+        Alert.alert('Save failed', 'Could not save your profile picture.');
+      }
+    })();
+  }
+
+  async function takePhoto() {
+    try {
+      const permission =
+        await ImagePicker.requestCameraPermissionsAsync();
+
+      if (!permission.granted) {
+        Alert.alert(
+          'Camera permission needed',
+          'Allow camera access in your phone settings to take a profile picture.'
+        );
+        return;
+      }
+
+      const result = await ImagePicker.launchCameraAsync({
+        mediaTypes: ['images'],
+        allowsEditing: true,
+        aspect: [1, 1],
+        quality: 0.8,
+      });
+
+      savePickedPhoto(result);
+    } catch {
+      Alert.alert('Camera error', 'Could not take a picture.');
+    }
+  }
+
+  async function chooseFromGallery() {
     try {
       const permission =
         await ImagePicker.requestMediaLibraryPermissionsAsync();
@@ -81,22 +133,19 @@ export default function ProfileScreen() {
         quality: 0.8,
       });
 
-      if (result.canceled) {
-        return;
-      }
-
-      const imageUri = result.assets[0]?.uri;
-
-      if (imageUri) {
-        const updated = { ...profile, imageUri };
-        await saveProfile(updated);
-        setProfile(updated);
-        Alert.alert('Photo updated', 'Your profile picture has been saved.');
-      }
+      savePickedPhoto(result);
     } catch {
       Alert.alert('Photo error', 'Could not select a picture.');
     }
   }
+
+  Alert.alert('Profile Picture', 'How would you like to add your photo?', [
+    { text: 'Take Photo', onPress: () => void takePhoto() },
+    { text: 'Choose from Gallery', onPress: () => void chooseFromGallery() },
+    { text: 'Cancel', style: 'cancel' },
+  ]);
+}
+
 
   async function removePhoto() {
     const updated = { ...profile, imageUri: null };
