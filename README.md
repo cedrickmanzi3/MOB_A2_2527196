@@ -76,7 +76,7 @@ The application has been tested for navigation, profile editing, input validatio
 
 ## 8. Final Commit
 
-`67499eea87317bff90f8ad40303e818a72f44660`
+`edc43522811392bf8af7602ceb79d1715219a2c5`
 
 Update this hash if you make and push further changes before submission.
 
