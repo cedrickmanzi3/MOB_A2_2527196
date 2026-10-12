@@ -72,7 +72,7 @@ The application has been tested for navigation, profile editing, input validatio
 **GitHub repository:** https://github.com/cedrickmanzi3/MOB_A2_2527196
 
 **Release:** https://github.com/cedrickmanzi3/MOB_A2_2527196/releases
-**APK download:** https://expo.dev/accounts/manzicedrick44/projects/cmportfolio/builds/5a98fdd6-5c42-4097-af74-c7b1f9b50da9
+**APK download:** https://github.com/cedrickmanzi3/MOB_A2_2527196/releases/download/v1.0.0/MOB_A2_2527196.apk
 
 ## 8. Final Commit
 
